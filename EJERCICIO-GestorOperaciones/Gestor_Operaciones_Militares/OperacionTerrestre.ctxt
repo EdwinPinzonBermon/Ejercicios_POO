@@ -1,0 +1,16 @@
+#BlueJ class context
+#Fri Oct 16 15:52:52 COT 2026
+comment0.target=OperacionTerrestre
+comment0.text=\r\n Write a description of class OperacionTerrestre here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=OperacionTerrestre()
+comment2.params=codigo nombre zona fecha estado efectivos tipoTerreno vehiculos
+comment2.target=OperacionTerrestre(java.lang.String, java.lang.String, java.lang.String, Fecha, Estado, int, java.lang.String, int)
+comment3.target=java.lang.String getTipoTerreno()
+comment4.params=tipoTerreno
+comment4.target=void setTipoTerreno(java.lang.String)
+comment5.target=int getVehiculos()
+comment6.params=vehiculos
+comment6.target=void setVehiculos(int)
+comment7.target=int calcularComplejidad()
+comment8.target=java.lang.String toString()
+numComments=9

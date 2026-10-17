@@ -1,0 +1,17 @@
+#BlueJ class context
+#Fri Oct 16 19:05:56 COT 2026
+comment0.target=GestorOperaciones
+comment0.text=\r\n Write a description of class GestorOperaciones here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=GestorOperaciones()
+comment2.params=operacion
+comment2.target=boolean registrarOperacion(OperacionMilitar)
+comment3.target=java.lang.String consultarOperaciones()
+comment4.params=codigo
+comment4.target=OperacionMilitar buscarOperacion(java.lang.String)
+comment5.params=codigo nuevoEstado
+comment5.target=boolean cambiarEstado(java.lang.String, Estado)
+comment6.params=tipo
+comment6.target=java.lang.String mostrarOperacionesXTipo(java.lang.String)
+comment7.target=java.lang.String mostrarComplejidades()
+comment8.target=OperacionMilitar buscarOperacionMasCompleja()
+numComments=9
