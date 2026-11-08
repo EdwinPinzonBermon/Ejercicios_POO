@@ -1,0 +1,20 @@
+#BlueJ class context
+#Sun Nov 08 15:34:30 COT 2026
+comment0.target=ProfesionalSalud
+comment0.text=\r\n Write a description of class ProfesionalSalud here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=ProfesionalSalud()
+comment10.params=montoMedicina
+comment10.target=void setMontoMedicina(Medicina)
+comment2.params=tipoDocumento documento nombre apellido direccion telefono estadoCivil edad estrato bono institucionSalud especialidad montoBioseguridad montoMedicina
+comment2.target=ProfesionalSalud(TipoDocumento, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int, Bono, java.lang.String, java.lang.String, ElementoBioseguridad, Medicina)
+comment3.target=java.lang.String getInstitucionSalud()
+comment4.params=institucionSalud
+comment4.target=void setInstitucionSalud(java.lang.String)
+comment5.target=java.lang.String getEspecialidad()
+comment6.params=especialidad
+comment6.target=void setEspecialidad(java.lang.String)
+comment7.target=ElementoBioseguridad getMontoBioseguridad()
+comment8.params=montoBioseguridad
+comment8.target=void setMontoBioseguridad(ElementoBioseguridad)
+comment9.target=Medicina getMontoMedicina()
+numComments=11
