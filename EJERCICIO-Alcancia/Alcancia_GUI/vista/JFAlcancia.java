@@ -1,3 +1,5 @@
+package vista;
+import modelo.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
