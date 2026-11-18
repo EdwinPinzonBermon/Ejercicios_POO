@@ -24,7 +24,7 @@ public class JFPrincipal extends JFrame implements ActionListener
     txtMedicinaI, txtCanasta;
     private JCheckBox chkCabezaDeHogar;
     private Gestor modelo;
-    
+
     public JFPrincipal(){
         modelo = new Gestor();
         setTitle("");
@@ -286,8 +286,261 @@ public class JFPrincipal extends JFrame implements ActionListener
         }
     }
 
-    private void guardar(){
+    private void guardar() {
+        try {
+            int tipo = cbTipo.getSelectedIndex();
 
+            if (tipo == 0) {
+                JOptionPane.showMessageDialog(this, "Seleccione el tipo de persona.");
+                return;
+            }
+
+            if (cbTipoDocumento.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Seleccione el tipo de documento.");
+                return;
+            }
+
+            String documento = txtDocumento.getText().trim();
+
+            if (documento.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese el número de documento.");
+                return;
+            }
+
+            if (modelo.buscar(documento) != null) {
+                JOptionPane.showMessageDialog(this, "Ya existe una persona con ese documento.");
+                return;
+            }
+
+            TipoDocumento tipoDoc = (cbTipoDocumento.getSelectedIndex() == 1)
+                ? TipoDocumento.CC_CEDULA_CIUDADANIA
+                : TipoDocumento.CE_CEDULA_EXTRANJERIA;
+
+            String nombre = txtNombre.getText().trim();
+            String apellido = txtApellido.getText().trim();
+            String direccion = txtDireccion.getText().trim();
+            String telefono = txtTelefono.getText().trim();
+            String estadoCivil = txtEstadoCivil.getText().trim();
+
+            int edad = leerEntero(txtEdad.getText().trim(), "Edad");
+            int estrato = leerEntero(txtEstrato.getText().trim(), "Estrato");
+
+            Persona persona = null;
+
+            if (tipo == 1) {
+                // Profesional de la Salud
+                String institucion = txtInstitucion.getText().trim();
+                String especialidad = txtEspecialidad.getText().trim();
+
+                double montoBioseguridad = leerDouble(txtBioseguridad.getText().trim(), "Elemento de bioseguridad");
+                double montoMedicina = leerDouble(txtMedicinaS.getText().trim(), "Medicina");
+
+                double valorBono = 350000;
+
+                if (!validarBono(valorBono, montoBioseguridad, montoMedicina)) {
+                    return;
+                }
+
+                persona = new ProfesionalSalud(
+                    tipoDoc, documento, nombre, apellido, direccion,
+                    telefono, estadoCivil, edad, estrato,
+                    new Bono(valorBono),
+                    institucion, especialidad,
+                    new ElementoBioseguridad(montoBioseguridad),
+                    new Medicina(montoMedicina)
+                );
+
+            } else if (tipo == 2) {
+                // Docente
+                String institucion = txtInstitucion.getText().trim();
+                NivelEducativo nivel = leerNivel();
+
+                double montoTecnologia = leerDouble(txtTecnologia.getText().trim(), "Implementos tecnológicos");
+                double montoServicio = leerDouble(txtServicio.getText().trim(), "Servicio internet/energía");
+
+                double valorBono = 100000;
+
+                if (!validarBono(valorBono, montoTecnologia, montoServicio)) {
+                    return;
+                }
+
+                persona = new Docente(
+                    tipoDoc, documento, nombre, apellido, direccion,
+                    telefono, estadoCivil, edad, estrato,
+                    new Bono(valorBono),
+                    institucion, nivel,
+                    new ImplementoTecnologico(montoTecnologia),
+                    new Servicio(montoServicio)
+                );
+
+            } else if (tipo == 3) {
+                // Persona Independiente
+                boolean cabezaHogar = chkCabezaDeHogar.isSelected();
+
+                double montoMedicina = leerDouble(txtMedicinaI.getText().trim(), "Medicina");
+                double montoCanasta = leerDouble(txtCanasta.getText().trim(), "Canasta familiar");
+
+                double valorBono = 160000;
+
+                if (!validarBono(valorBono, montoMedicina, montoCanasta)) {
+                    return;
+                }
+
+                persona = new Independiente(
+                    tipoDoc, documento, nombre, apellido, direccion,
+                    telefono, estadoCivil, edad, estrato,
+                    new Bono(valorBono),
+                    cabezaHogar,
+                    new Medicina(montoMedicina),
+                    new CanastaFamiliar(montoCanasta)
+                );
+            }
+
+            if (persona != null) {
+                modelo.addPersona(persona);
+                JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
+                limpiar();
+            }
+
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void buscar() {
+        String documento = txtDocumento.getText().trim();
+
+        if (documento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el documento a buscar.");
+            return;
+        }
+
+        Persona persona = modelo.buscar(documento);
+
+        if (persona == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró una persona con ese documento.");
+            return;
+        }
+
+        StringBuilder mensaje = new StringBuilder();
+
+        mensaje.append("Clasificación: ").append(clasificar(persona)).append("\n");
+        mensaje.append("Tipo documento: ").append(persona.getTipoDocumento()).append("\n");
+        mensaje.append("Documento: ").append(persona.getDocumento()).append("\n");
+        mensaje.append("Nombre: ").append(persona.getNombre()).append(" ").append(persona.getApellido()).append("\n");
+        mensaje.append("Dirección: ").append(persona.getDireccion()).append("\n");
+        mensaje.append("Teléfono: ").append(persona.getTelefono()).append("\n");
+        mensaje.append("Edad: ").append(persona.getEdad()).append("\n");
+        mensaje.append("Estrato: ").append(persona.getEstrato()).append("\n");
+        mensaje.append("Estado civil: ").append(persona.getEstadoCivil()).append("\n");
+        mensaje.append("Bono asignado: $").append(persona.getBono().getMonto()).append("\n");
+
+        if (persona instanceof ProfesionalSalud) {
+            ProfesionalSalud ps = (ProfesionalSalud) persona;
+
+            mensaje.append("\nDatos Profesional de la Salud:\n");
+            mensaje.append("Institución de salud: ").append(ps.getInstitucionSalud()).append("\n");
+            mensaje.append("Especialidad: ").append(ps.getEspecialidad()).append("\n");
+            mensaje.append("Elemento de bioseguridad: $").append(ps.getMontoBioseguridad().getMonto()).append("\n");
+            mensaje.append("Medicina: $").append(ps.getMontoMedicina().getMonto()).append("\n");
+
+        } else if (persona instanceof Docente) {
+            Docente d = (Docente) persona;
+
+            mensaje.append("\nDatos Docente:\n");
+            mensaje.append("Institución educativa: ").append(d.getInstitucionEducativa()).append("\n");
+            mensaje.append("Nivel educativo: ").append(d.getNivel()).append("\n");
+            mensaje.append("Implementos tecnológicos: $").append(d.getMontoTecnologia().getMonto()).append("\n");
+            mensaje.append("Servicio internet/energía: $").append(d.getMontoServicio().getMonto()).append("\n");
+
+        } else if (persona instanceof Independiente) {
+            Independiente i = (Independiente) persona;
+
+            mensaje.append("\nDatos Persona Independiente:\n");
+            mensaje.append("Cabeza de hogar: ").append(i.isEsCabezaHogar() ? "Sí" : "No").append("\n");
+            mensaje.append("Medicina: $").append(i.getMontoMedicina().getMonto()).append("\n");
+            mensaje.append("Canasta familiar: $").append(i.getMontoCanasta().getMonto()).append("\n");
+        }
+
+        JOptionPane.showMessageDialog(
+            this,
+            mensaje.toString(),
+            "Resultado de búsqueda",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
+    private String clasificar(Persona persona) {
+        if (persona instanceof ProfesionalSalud) {
+            return "Profesional de la Salud";
+        } else if (persona instanceof Docente) {
+            return "Docente";
+        } else if (persona instanceof Independiente) {
+            return "Persona Independiente";
+        }
+        return "Persona";
+    }
+
+    private boolean validarBono(double valorBono, double monto1, double monto2) {
+        if (monto1 + monto2 > valorBono) {
+            JOptionPane.showMessageDialog(
+                this,
+                "La distribución no puede superar el valor del bono.\n" +
+                "Valor del bono: $" + valorBono + "\n" +
+                "Total distribuido: $" + (monto1 + monto2)
+            );
+            return false;
+        }
+        return true;
+    }
+
+    private int leerEntero(String texto, String campo) {
+        if (texto == null || texto.isEmpty()) {
+            throw new NumberFormatException("El campo " + campo + " es obligatorio.");
+        }
+
+        try {
+            return Integer.parseInt(texto);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("El campo " + campo + " debe ser un número entero.");
+        }
+    }
+
+    private double leerDouble(String texto, String campo) {
+        if (texto == null || texto.trim().isEmpty()) {
+            return 0.0;
+        }
+
+        double valor;
+
+        try {
+            valor = Double.parseDouble(texto.trim());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("El campo " + campo + " debe ser un número válido.");
+        }
+
+        if (valor < 0) {
+            throw new NumberFormatException("El campo " + campo + " no puede ser negativo.");
+        }
+
+        return valor;
+    }
+
+    private NivelEducativo leerNivel() {
+        switch (cbNivel.getSelectedIndex()) {
+            case 1:
+                return NivelEducativo.TECNICO;
+            case 2:
+                return NivelEducativo.TECNOLOGO;
+            case 3:
+                return NivelEducativo.PREGRADO;
+            case 4:
+                return NivelEducativo.MAESTRIA;
+            case 5:
+                return NivelEducativo.DOCTORADO;
+            default:
+                throw new IllegalArgumentException("Debe seleccionar un nivel educativo.");
+        }
     }
 
     private void limpiar(){
@@ -311,10 +564,7 @@ public class JFPrincipal extends JFrame implements ActionListener
         cbTipo.setSelectedIndex(0);
         cbNivel.setSelectedIndex(0);
         chkCabezaDeHogar.setSelected(false);
-    }
-
-    private void buscar(){
-
+        habilitarSegunTipo(); 
     }
 
 }
