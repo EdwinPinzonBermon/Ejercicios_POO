@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Nov 22 17:28:14 COT 2026
+comment0.target=Voto
+comment1.params=votante votado
+comment1.target=Voto(Cardenal, Cardenal)
+comment2.target=Cardenal getVotante()
+comment3.target=Cardenal getVotado()
+numComments=4

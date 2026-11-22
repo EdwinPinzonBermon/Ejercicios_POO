@@ -1,5 +1,4 @@
 import vista.*;
-import vista.JFPrincipal;
 
 /**
  * Write a description of class Main here.
@@ -10,6 +9,7 @@ import vista.JFPrincipal;
 public class Main
 {
     public static void main(String[] args) {
-    
+        JFPrincipal vista = new JFPrincipal();
+        vista.setVisible(true);
     }   
 }

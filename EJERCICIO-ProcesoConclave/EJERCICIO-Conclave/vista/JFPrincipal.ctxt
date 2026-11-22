@@ -1,8 +1,20 @@
 #BlueJ class context
-#Sat Nov 07 19:12:00 COT 2026
+#Sun Nov 22 17:30:53 COT 2026
 comment0.target=JFPrincipal
-comment0.text=\r\n Write a description of class JFPrincipal here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
 comment1.target=JFPrincipal()
+comment10.target=void mostrarResultados()
+comment11.target=void siguienteRonda()
+comment12.target=void actualizarBotonVotar()
+comment13.target=void mostrarConteoRonda()
 comment2.target=void initComponentes()
-comment3.target=void agregarEventos()
-numComments=4
+comment3.target=void cargarCombo()
+comment4.target=void actualizarEstadoInicial()
+comment5.target=void agregarEventos()
+comment6.params=e
+comment6.target=void actionPerformed(java.awt.event.ActionEvent)
+comment7.params=e
+comment7.target=void actionPerformed(java.awt.event.ActionEvent)
+comment8.params=e
+comment8.target=void actionPerformed(java.awt.event.ActionEvent)
+comment9.target=void votar()
+numComments=14

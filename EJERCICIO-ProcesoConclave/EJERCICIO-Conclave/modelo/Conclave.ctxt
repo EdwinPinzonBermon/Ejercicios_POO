@@ -1,0 +1,15 @@
+#BlueJ class context
+#Sun Nov 22 17:28:50 COT 2026
+comment0.target=Conclave
+comment1.target=Conclave()
+comment10.target=int getTotalElectores()
+comment11.target=boolean isPapaElegido()
+comment2.target=void cargarCardenales()
+comment3.target=void calcularVotosRequeridos()
+comment4.target=void iniciarNuevaRonda()
+comment5.target=boolean rondaCompleta()
+comment6.target=boolean verificarMayoria()
+comment7.target=void siguienteRonda()
+comment8.target=java.lang.String getResultadosRonda()
+comment9.target=int getVotosRequeridos()
+numComments=12

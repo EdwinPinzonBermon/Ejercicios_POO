@@ -1,0 +1,18 @@
+#BlueJ class context
+#Sun Nov 22 17:28:14 COT 2026
+comment0.target=Ronda
+comment1.params=numero
+comment1.target=Ronda(int)
+comment10.target=int getDia()
+comment2.target=void calcularJornadaYDia()
+comment3.params=totalElectores
+comment3.target=boolean estaCompleta(int)
+comment4.params=elector
+comment4.target=boolean yaVoto(Cardenal)
+comment5.params=cardenal
+comment5.target=int getVotos(Cardenal)
+comment6.target=Cardenal getGanador()
+comment7.target=java.util.ArrayList getConteoVotos()
+comment8.target=int getNumero()
+comment9.target=java.lang.String getJornada()
+numComments=11
