@@ -1,0 +1,20 @@
+#BlueJ class context
+#Tue Nov 24 17:14:36 COT 2026
+comment0.target=Riesgo
+comment1.target=Riesgo()
+comment10.params=nivelPeligro
+comment10.target=void setNivelPeligro(int)
+comment11.target=java.lang.String toString()
+comment2.params=codigo descripcion tipo nivelPeligro
+comment2.target=Riesgo(java.lang.String, java.lang.String, java.lang.String, int)
+comment3.target=java.lang.String getCodigo()
+comment4.params=codigo
+comment4.target=void setCodigo(java.lang.String)
+comment5.target=java.lang.String getDescripcion()
+comment6.params=descripcion
+comment6.target=void setDescripcion(java.lang.String)
+comment7.target=java.lang.String getTipo()
+comment8.params=tipo
+comment8.target=void setTipo(java.lang.String)
+comment9.target=int getNivelPeligro()
+numComments=12
