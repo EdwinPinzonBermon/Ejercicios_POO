@@ -1,0 +1,22 @@
+#BlueJ class context
+#Fri Oct 09 18:42:53 COT 2026
+comment0.target=ControladorPedido
+comment1.params=vista
+comment1.target=ControladorPedido(Vista.FrmPedido)
+comment10.target=Vista.FrmPedido getVista()
+comment11.params=vista
+comment11.target=void setVista(Vista.FrmPedido)
+comment2.params=vista cliente
+comment2.target=ControladorPedido(Vista.FrmPedido, Modelo.Cliente)
+comment3.params=codigo nombre precio
+comment3.target=void agregarProducto(java.lang.String, java.lang.String, double)
+comment4.params=codigoProducto
+comment4.target=void eliminarProducto(java.lang.String)
+comment5.target=double calcularTotal()
+comment6.params=numeroPedido cedula nombreCliente
+comment6.target=void nuevoPedido(int, java.lang.String, java.lang.String)
+comment7.target=void limpiarPedido()
+comment8.target=Modelo.Cliente getCliente()
+comment9.params=cliente
+comment9.target=void setCliente(Modelo.Cliente)
+numComments=12

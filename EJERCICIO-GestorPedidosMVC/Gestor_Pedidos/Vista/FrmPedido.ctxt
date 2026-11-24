@@ -1,0 +1,15 @@
+#BlueJ class context
+#Tue Nov 24 17:32:31 COT 2026
+comment0.target=FrmPedido
+comment1.target=FrmPedido()
+comment2.target=void crearTitulo()
+comment3.target=void crearPanelCentral()
+comment4.target=javax.swing.JPanel crearPanelPedidoCliente()
+comment5.target=javax.swing.JPanel crearPanelProducto()
+comment6.target=javax.swing.JPanel crearPanelTabla()
+comment7.params=fila columna
+comment7.target=boolean isCellEditable(int, int)
+comment8.target=void crearPanelInferior()
+comment9.params=e
+comment9.target=void actionPerformed(java.awt.event.ActionEvent)
+numComments=10
