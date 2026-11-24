@@ -1,10 +1,37 @@
 #BlueJ class context
-#Sat Nov 07 19:22:29 COT 2026
+#Tue Nov 24 12:11:43 COT 2026
 comment0.target=JFAlcancia
 comment1.target=JFAlcancia()
+comment10.target=javax.swing.JPanel getPCentro()
+comment11.target=javax.swing.JLabel getLblIngresarMonedas()
+comment12.target=javax.swing.JPanel getPBotones()
+comment13.target=javax.swing.JButton getBtn50()
+comment14.target=javax.swing.JButton getBtn100()
+comment15.target=javax.swing.JButton getBtn200()
+comment16.target=javax.swing.JButton getBtn500()
+comment17.target=javax.swing.JButton getBtn1000()
+comment18.target=javax.swing.JPanel getPResumen()
+comment19.target=javax.swing.JLabel getLblMonedas50()
 comment2.target=void crearInterfaz()
-comment3.params=evento
-comment3.target=void actionPerformed(java.awt.event.ActionEvent)
-comment4.target=void actualizarCerdo()
-comment5.target=void actualizarAlcancia()
-numComments=6
+comment20.target=javax.swing.JLabel getLblMonedas100()
+comment21.target=javax.swing.JLabel getLblMonedas200()
+comment22.target=javax.swing.JLabel getLblMonedas500()
+comment23.target=javax.swing.JLabel getLblMonedas1000()
+comment24.target=javax.swing.JLabel getLblTotalMonedas()
+comment25.target=javax.swing.JLabel getLblCantMonedas50()
+comment26.target=javax.swing.JLabel getLblCantMonedas100()
+comment27.target=javax.swing.JLabel getLblCantMonedas200()
+comment28.target=javax.swing.JLabel getLblCantMonedas500()
+comment29.target=javax.swing.JLabel getLblCantMonedas1000()
+comment3.target=javax.swing.JPanel getPPrincipal()
+comment30.target=javax.swing.JLabel getLblCantTotalMonedas()
+comment31.target=javax.swing.JPanel getPInferior()
+comment32.target=javax.swing.JPanel getPBoton()
+comment33.target=javax.swing.JButton getBtnVaciar()
+comment4.target=javax.swing.JPanel getPEncabezado()
+comment5.target=javax.swing.JLabel getLblTitulo()
+comment6.target=javax.swing.JLabel getLblImagenCerdo()
+comment7.target=javax.swing.JLabel getLblSaldo()
+comment8.target=javax.swing.JLabel getLblSaldoDisponible()
+comment9.target=javax.swing.ImageIcon getIconoEscaladoCerdo()
+numComments=34

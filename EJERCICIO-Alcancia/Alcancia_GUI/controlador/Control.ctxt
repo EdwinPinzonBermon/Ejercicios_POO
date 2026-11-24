@@ -1,0 +1,11 @@
+#BlueJ class context
+#Tue Nov 24 12:12:15 COT 2026
+comment0.target=Control
+comment0.text=\r\n Write a description of class Control here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=modelo vista
+comment1.target=Control(modelo.Alcancia, vista.JFAlcancia)
+comment2.params=event
+comment2.target=void actionPerformed(java.awt.event.ActionEvent)
+comment3.target=void actualizarCerdo()
+comment4.target=void actualizarAlcancia()
+numComments=5
